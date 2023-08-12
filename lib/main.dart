@@ -42,7 +42,7 @@ class _LoginPageContentState extends State<LoginPageContent> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: Image.asset("assets/bg.jpeg", fit: BoxFit.cover),
+            child: Image.asset("assets/bg.jpg", fit: BoxFit.cover),
           ),
           Positioned(
             top: 100,
