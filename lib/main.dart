@@ -9,7 +9,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       title: 'Clik',
+
       home: LoginPageContent(),
       debugShowCheckedModeBanner: false,
     );
@@ -88,7 +90,9 @@ class _LoginPageContentState extends State<LoginPageContent> {
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.white70),
                   ),
-                ),
+                ),style: TextStyle(
+                color: Colors.white,
+              ),
               ),
             ),
           ),
@@ -117,7 +121,9 @@ class _LoginPageContentState extends State<LoginPageContent> {
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.white70),
                   ),
-                ),
+                ),style: TextStyle(
+                color: Colors.white,
+              ),
               ),
             ),
           ),
