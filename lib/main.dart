@@ -11,6 +11,7 @@ class LoginPage extends StatelessWidget {
     return MaterialApp(
       title: 'Clik',
       home: LoginPageContent(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
