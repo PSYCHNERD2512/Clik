@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import './homeScreen.dart';
+import './searchPage.dart';
 void main() => runApp(const LoginPage());
 
 class LoginPage extends StatelessWidget {
@@ -141,7 +142,7 @@ class _LoginPageContentState extends State<LoginPageContent> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => MyScreen()), // Replace MyScreen() with the name of your page
+                        MaterialPageRoute(builder: (context) => SearchPage()), // Replace MyScreen() with the name of your page
                       );
 
                     },

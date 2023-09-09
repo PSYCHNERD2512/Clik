@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/Search_with_carousel.dart';
+import './searchPage.dart';
 
 class MyScreen extends StatefulWidget {
   @override
@@ -11,7 +13,6 @@ class _MyScreenState extends State<MyScreen> {
   Widget buildImageWithBorder(int index, String imagePath, String labelText) {
     return GestureDetector(
       onTap: () {
-
         setState(() {
           selectedImageIndex = index;
         });
@@ -30,7 +31,7 @@ class _MyScreenState extends State<MyScreen> {
                       width: selectedImageIndex == index ? 2.0 : 0.0,
                     ),
                     borderRadius: BorderRadius.circular(20)),
-                child: Image.asset(imagePath, width: 150, height: 150)),
+                child: Image.asset(imagePath, width: 100, height: 100)),
             SizedBox(height: 8.0),
             Text(
               labelText,
@@ -44,12 +45,59 @@ class _MyScreenState extends State<MyScreen> {
     );
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomAppBar(color: Colors.white,
-        child: FittedBox(child: Row(children: [Image.asset('assets/1.png')],)),),
-      body: Container(color: Colors.grey[100],
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        child: FittedBox(
+            child: Row(
+          children: [
+            Column(
+              children: [
+                InkWell(
+                    onTap: () {},
+                    child: Image.asset(
+                      'assets/1.png',
+                      height: 0.5,
+
+                    )),
+              ],
+            ),
+            InkWell(
+                onTap: () {},
+                child: Image.asset(
+                  'assets/2.png',
+                  height: 0.5,
+
+                )),
+            InkWell(
+                onTap: () {},
+                child: Image.asset(
+                  'assets/3.png',
+                  height: 0.5,
+
+                )),
+            InkWell(
+                onTap: () {},
+                child: Image.asset(
+                  'assets/4.png',
+                  height: 0.5,
+
+                )),
+            InkWell(
+                onTap: () {},
+                child: Image.asset(
+                  'assets/5.png',
+                  height: 0.5,
+
+                ))
+          ],
+        )),
+      ),
+      body: Container(
+        color: Colors.grey[200],
         child: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -61,7 +109,9 @@ class _MyScreenState extends State<MyScreen> {
                         width: 10,
                       ),
                       IconButton(
-                        onPressed: () {Navigator.pop(context);},
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                         icon: Icon(Icons.arrow_back_ios_new),
                       ),
                       Spacer(),
@@ -80,7 +130,7 @@ class _MyScreenState extends State<MyScreen> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 10, 22, 10),
+                  padding: const EdgeInsets.fromLTRB(22, 8, 22, 0),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
@@ -99,16 +149,14 @@ class _MyScreenState extends State<MyScreen> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(15, 5, 0, 5),
+                        padding: const EdgeInsets.fromLTRB(15, 1, 0, 1),
                         child: Row(
                           children: [
-                            FittedBox(
-                              child: Text(
-                                "What",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25,
-                                ),
+                            Text(
+                              "What",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
                               ),
                             ),
                             Spacer(),
@@ -118,7 +166,7 @@ class _MyScreenState extends State<MyScreen> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   "Choose Service",
-                                  style: TextStyle(color: Colors.grey),
+                                  style: TextStyle(color: Colors.grey,fontSize: 13),
                                 ),
                               ),
                             ),
@@ -129,7 +177,7 @@ class _MyScreenState extends State<MyScreen> {
                   ),
                 ),
                 Padding(
-                    padding: const EdgeInsets.fromLTRB(22, 10, 22, 10),
+                    padding: const EdgeInsets.fromLTRB(22,8, 22, 0),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
@@ -156,7 +204,7 @@ class _MyScreenState extends State<MyScreen> {
                                   "Where",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 25,
+                                    fontSize: 20,
                                   ),
                                 ),
                               ],
@@ -187,7 +235,7 @@ class _MyScreenState extends State<MyScreen> {
                               ),
                             ),
                             Container(
-                              height: 200.0,
+                              height: 150.0,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: [
@@ -206,7 +254,7 @@ class _MyScreenState extends State<MyScreen> {
                       ),
                     )),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 10, 22, 10),
+                  padding: const EdgeInsets.fromLTRB(22,8, 22, 0),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
@@ -225,7 +273,7 @@ class _MyScreenState extends State<MyScreen> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(15, 5, 0, 5),
+                        padding: const EdgeInsets.fromLTRB(15, 1, 0, 1),
                         child: Row(
                           children: [
                             FittedBox(
@@ -233,7 +281,7 @@ class _MyScreenState extends State<MyScreen> {
                                 "When",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  fontSize: 20,
                                 ),
                               ),
                             ),
@@ -244,7 +292,7 @@ class _MyScreenState extends State<MyScreen> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   "Choose Date(s)",
-                                  style: TextStyle(color: Colors.grey),
+                                  style: TextStyle(color: Colors.grey,fontSize: 13),
                                 ),
                               ),
                             ),
@@ -255,7 +303,7 @@ class _MyScreenState extends State<MyScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 10, 22, 10),
+                  padding: const EdgeInsets.fromLTRB(22,8, 22, 0),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
@@ -274,7 +322,7 @@ class _MyScreenState extends State<MyScreen> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(15, 5, 0, 5),
+                        padding: const EdgeInsets.fromLTRB(15, 1, 0, 1),
                         child: Row(
                           children: [
                             FittedBox(
@@ -282,7 +330,7 @@ class _MyScreenState extends State<MyScreen> {
                                 "Budget",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  fontSize: 20,
                                 ),
                               ),
                             ),
@@ -293,7 +341,7 @@ class _MyScreenState extends State<MyScreen> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   "Choose Range",
-                                  style: TextStyle(color: Colors.grey),
+                                  style: TextStyle(color: Colors.grey,fontSize: 13),
                                 ),
                               ),
                             ),
@@ -304,7 +352,7 @@ class _MyScreenState extends State<MyScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 10, 22, 10),
+                  padding: const EdgeInsets.fromLTRB(22,8, 22, 0),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
@@ -323,7 +371,7 @@ class _MyScreenState extends State<MyScreen> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(15, 5, 0, 5),
+                        padding: const EdgeInsets.fromLTRB(15, 1, 0, 1),
                         child: Row(
                           children: [
                             FittedBox(
@@ -331,7 +379,7 @@ class _MyScreenState extends State<MyScreen> {
                                 "Style",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  fontSize: 20,
                                 ),
                               ),
                             ),
@@ -342,7 +390,7 @@ class _MyScreenState extends State<MyScreen> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   "Choose Style",
-                                  style: TextStyle(color: Colors.grey),
+                                  style: TextStyle(color: Colors.grey,fontSize: 13),
                                 ),
                               ),
                             ),
@@ -353,7 +401,7 @@ class _MyScreenState extends State<MyScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 10, 22, 10),
+                  padding: const EdgeInsets.fromLTRB(22, 8, 22, 10),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
@@ -372,7 +420,7 @@ class _MyScreenState extends State<MyScreen> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(15, 5, 0, 5),
+                        padding: const EdgeInsets.fromLTRB(15, 1, 0, 1),
                         child: Row(
                           children: [
                             FittedBox(
@@ -380,7 +428,7 @@ class _MyScreenState extends State<MyScreen> {
                                 "Language",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  fontSize: 20,
                                 ),
                               ),
                             ),
@@ -391,7 +439,7 @@ class _MyScreenState extends State<MyScreen> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   "Prefered language",
-                                  style: TextStyle(color: Colors.grey),
+                                  style: TextStyle(color: Colors.grey,fontSize: 13),
                                 ),
                               ),
                             ),
@@ -404,7 +452,8 @@ class _MyScreenState extends State<MyScreen> {
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.deepOrange,
-                    borderRadius: BorderRadius.circular(15.0), // Round the corners
+                    borderRadius:
+                        BorderRadius.circular(15.0), // Round the corners
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.1), // Shadow color
@@ -415,25 +464,25 @@ class _MyScreenState extends State<MyScreen> {
                     ],
                   ),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CarouselPage()), // Replace MyScreen() with the name of your page
+                    );},
                     child: Container(
                       // Wrap Text with another Container for styling
-                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 5, horizontal: 30),
                       child: Text(
                         "Search",
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-
-
-
                         ),
                       ),
                     ),
                   ),
                 )
-
               ],
             ),
           ),
