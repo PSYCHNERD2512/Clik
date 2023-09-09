@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import './homeScreen.dart';
 void main() => runApp(const LoginPage());
 
 class LoginPage extends StatelessWidget {
@@ -139,7 +139,11 @@ class _LoginPageContentState extends State<LoginPageContent> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: ElevatedButton(
                     onPressed: () {
-                      // Login button action
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyScreen()), // Replace MyScreen() with the name of your page
+                      );
+
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xFFFB4C04).withOpacity(0.80), // Slightly transparent
