@@ -117,9 +117,9 @@ class _SearchPageState extends State<SearchPage> {
                     ),
                     // Multiple Cards
 
-                    _buildCardWithText(context,"assets/bg.jpg", "Wedding Photos"),
-                    _buildCardWithText(context,"assets/bg.jpg", "Birthday Photos"),
-                    _buildCardWithText(context,"assets/bg.jpg", "Couple Sessions"),
+                    _buildCardWithText(context,"assets/wedding-photo.jpeg", "Wedding Photos"),
+                    _buildCardWithText(context,"assets/Birthday-photo.jpeg", "Birthday Photos"),
+                    _buildCardWithText(context,"assets/Couple-photo.jpeg", "Couple Sessions"),
                   ],
                 ),
               ),

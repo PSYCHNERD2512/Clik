@@ -12,9 +12,9 @@ class _CarouselPageState extends State<CarouselPage> {
   );
 
   List<String> images = [
-    "assets/bg.jpg",
-    "assets/bg.jpg",
-    "assets/bg.jpg",
+    "assets/img1.jpeg",
+    "assets/img2.jpeg",
+    "assets/img3.jpeg",
   ];
   List<bool> liked = [false, false, false];
 
@@ -142,7 +142,7 @@ class _CarouselPageState extends State<CarouselPage> {
               child: Card(shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),child: Image.asset(
-                "assets/bg.jpg",
+                "assets/map.png",
                 fit: BoxFit.cover,
                 height: 200,
               ),),
@@ -160,10 +160,12 @@ class _CarouselPageState extends State<CarouselPage> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: Image.asset(
-              imagePath,
-              fit: BoxFit.cover,
-              height: 200,
+            child: Center(
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.cover,
+                height: 200,
+              ),
             ),
           ),
           Positioned(
