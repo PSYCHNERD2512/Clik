@@ -12,48 +12,78 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
-        child: FittedBox(
+        child: SizedBox(height: 70,
           child: Row(
-            children: [
+            children: [Spacer(),
               Column(
                 children: [
                   InkWell(
                     onTap: () {},
-                    child: Image.asset(
-                      'assets/1.png',
-                      height: 50, // Adjust the height as needed
+                    child: FittedBox(
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/1.png',
+                            height: 50,
+                          ),Text("Explore",style: TextStyle(fontSize: 12),)
+                        ],
+                      ),
                     ),
                   ),
                 ],
-              ),
+              ),Spacer(),
               InkWell(
                 onTap: () {},
-                child: Image.asset(
-                  'assets/2.png',
-                  height: 50, // Adjust the height as needed
+                child:  FittedBox(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/2.png',
+                        height: 50,
+                      ),Text("Inbox",style: TextStyle(fontSize: 12),)
+                    ],
+                  ),
                 ),
-              ),
+              ),Spacer(),
               InkWell(
                 onTap: () {},
-                child: Image.asset(
-                  'assets/3.png',
-                  height: 50, // Adjust the height as needed
+                child: FittedBox(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/3.png',
+                        height: 50,
+                      ),Text("Clik'd",style: TextStyle(fontSize: 12),)
+                    ],
+                  ),
                 ),
-              ),
+              ),Spacer(),
               InkWell(
                 onTap: () {},
-                child: Image.asset(
-                  'assets/4.png',
-                  height: 50, // Adjust the height as needed
+                child: FittedBox(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/4.png',
+                        height: 50,
+                      ),Text("Wishlist",style: TextStyle(fontSize: 12),)
+                    ],
+                  ),
                 ),
-              ),
+              ),Spacer(),
               InkWell(
                 onTap: () {},
-                child: Image.asset(
-                  'assets/5.png',
-                  height: 50, // Adjust the height as needed
+                child: FittedBox(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/5.png',
+                        height: 50,
+                      ),Text("Profile",style: TextStyle(fontSize: 12),)
+                    ],
+                  ),
                 ),
-              ),
+              ),Spacer()
             ],
           ),
         ),
