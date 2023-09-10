@@ -27,7 +27,7 @@ class _CarouselPageState extends State<CarouselPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar:BottomAppBar(
+      bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         child: SizedBox(height: 70,
           child: Row(
@@ -42,26 +42,26 @@ class _CarouselPageState extends State<CarouselPage> {
                           Image.asset(
                             'assets/1.png',
                             height: 50,
-                          ),Text("Explore",style: TextStyle(fontSize: 12),)
+                          ), Text("Explore", style: TextStyle(fontSize: 12),)
                         ],
                       ),
                     ),
                   ),
                 ],
-              ),Spacer(),
+              ), Spacer(),
               InkWell(
                 onTap: () {},
-                child:  FittedBox(
+                child: FittedBox(
                   child: Column(
                     children: [
                       Image.asset(
                         'assets/2.png',
                         height: 50,
-                      ),Text("Inbox",style: TextStyle(fontSize: 12),)
+                      ), Text("Inbox", style: TextStyle(fontSize: 12),)
                     ],
                   ),
                 ),
-              ),Spacer(),
+              ), Spacer(),
               InkWell(
                 onTap: () {},
                 child: FittedBox(
@@ -70,11 +70,11 @@ class _CarouselPageState extends State<CarouselPage> {
                       Image.asset(
                         'assets/3.png',
                         height: 50,
-                      ),Text("Clik'd",style: TextStyle(fontSize: 12),)
+                      ), Text("Clik'd", style: TextStyle(fontSize: 12),)
                     ],
                   ),
                 ),
-              ),Spacer(),
+              ), Spacer(),
               InkWell(
                 onTap: () {},
                 child: FittedBox(
@@ -83,11 +83,11 @@ class _CarouselPageState extends State<CarouselPage> {
                       Image.asset(
                         'assets/4.png',
                         height: 50,
-                      ),Text("Wishlist",style: TextStyle(fontSize: 12),)
+                      ), Text("Wishlist", style: TextStyle(fontSize: 12),)
                     ],
                   ),
                 ),
-              ),Spacer(),
+              ), Spacer(),
               InkWell(
                 onTap: () {},
                 child: FittedBox(
@@ -96,11 +96,11 @@ class _CarouselPageState extends State<CarouselPage> {
                       Image.asset(
                         'assets/5.png',
                         height: 50,
-                      ),Text("Profile",style: TextStyle(fontSize: 12),)
+                      ), Text("Profile", style: TextStyle(fontSize: 12),)
                     ],
                   ),
                 ),
-              ),Spacer()
+              ), Spacer()
             ],
           ),
         ),
@@ -163,19 +163,20 @@ class _CarouselPageState extends State<CarouselPage> {
                   },
                 ),
               ),
+
               Center(
                 child: Text(
                   "Browse by Area",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-              ),Padding(
+              ), Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Card(shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
-                ),child: Image.asset(
+                ), child: Image.asset(
                   "assets/map.png",
                   fit: BoxFit.cover,
-                  height: 240,width: 325,
+                  height: 240, width: 325,
                 ),),
               )
             ],
@@ -195,20 +196,15 @@ class _CarouselPageState extends State<CarouselPage> {
             left: 0,
             right: 0,
             bottom: 0,
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50.0),
-              ),
-              child: FittedBox(
-                child: Container(
-                  width: 400,
-                  height: 350,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(50.0),
-                    child: Image.asset(
-                      imagePath,
-                      fit: BoxFit.cover,
-                    ),
+            child: FittedBox(
+              child: Container(
+                width: 300,
+                height: 300,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(40.0),
+                  child: Image.asset(
+                    imagePath,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
@@ -223,7 +219,7 @@ class _CarouselPageState extends State<CarouselPage> {
               child: IconButton(
                 icon: liked[index]
                     ? Icon(Icons.favorite,)
-                    : Icon(Icons.favorite_border,color:Colors.grey[600]),
+                    : Icon(Icons.favorite_border, color: Colors.grey[600]),
                 color: liked[index] ? Colors.red : Colors.grey,
                 onPressed: () {
                   setState(() {
@@ -231,6 +227,40 @@ class _CarouselPageState extends State<CarouselPage> {
                   });
                 },
               ),
+            ),
+          ),
+          Positioned(
+            top:100,
+            left: 0,
+            right: 0,
+
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_back, color: Colors.white,),
+                  onPressed: () {
+                    if (_pageController.page! > 0) {
+                      _pageController.previousPage(
+                        duration: Duration(milliseconds: 500),
+                        curve: Curves.easeInOut,
+                      );
+                    }
+                  },
+                ),
+                SizedBox(width: 140), // Add spacing between arrows if needed
+                IconButton(
+                  icon: Icon(Icons.arrow_forward, color: Colors.white,),
+                  onPressed: () {
+                    if (_pageController.page! < images.length - 1) {
+                      _pageController.nextPage(
+                        duration: Duration(milliseconds: 600),
+                        curve: Curves.easeInOut,
+                      );
+                    }
+                  },
+                ),
+              ],
             ),
           ),
         ],
