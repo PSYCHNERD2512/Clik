@@ -17,6 +17,7 @@ class _CarouselPageState extends State<CarouselPage> {
     "assets/img3.jpeg",
   ];
   List<bool> liked = [false, false, false];
+  int currentPage = 1;
 
   @override
   void dispose() {
@@ -113,61 +114,92 @@ class _CarouselPageState extends State<CarouselPage> {
                 padding: const EdgeInsets.all(25.0),
                 child: Stack(
                   children: [
-                    TextFormField(
-                      decoration: InputDecoration(
-                        hintStyle: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                        ),
-                        hintText: "What are you looking for?",
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 5, 10, 0),
-                      child: Row(
-                        children: [
-                          Spacer(),
-                          IconButton(
-                            onPressed: () {
-                              print("Filter");
-                            },
-                            icon: Icon(Icons.filter_list_alt),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3),
                           ),
                         ],
                       ),
-                    ),
+                      child: Row(
+                        children: [
+                          Icon(Icons.search, color: Colors.black),
+                          SizedBox(width: 10),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  hintText: 'What are you looking for?',
+                                  border: InputBorder.none,
+                                  hintTextDirection: TextDirection.ltr,
+                                  hintStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.filter_list,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              // Add your filter button action here
+                            },
+                            color: Colors.grey, // Set icon color
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
               Center(
                 child: Text(
                   "Browse Photographs",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
               SizedBox(height: 20),
               Container(
-                height: 250,
-                child: PageView.builder(
-                  controller: _pageController,
-                  itemCount: images.length,
-                  itemBuilder: (context, index) {
-                    return _buildCarouselItem(images[index], index);
-                  },
+                height: 300,
+                child: Stack(alignment: Alignment.center,
+                  children: [
+                    PageView.builder(
+                      controller: _pageController,
+                      itemCount: images.length * 10, onPageChanged: (index) {
+                      setState(() {
+                        currentPage = index;
+                      });
+                    },
+
+
+                      itemBuilder: (context, index) {
+                        return _buildCarouselItem(
+                            images[index%3], index%3, currentPage);
+                      },
+                    ),
+                  ],
                 ),
               ),
 
               Center(
-                child: Text(
-                  "Browse by Area",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    "Browse by Area",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ), Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -186,7 +218,7 @@ class _CarouselPageState extends State<CarouselPage> {
     );
   }
 
-  Widget _buildCarouselItem(String imagePath, int index) {
+  Widget _buildCarouselItem(String imagePath, int index, int currentIndex) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.0),
       child: Stack(
@@ -196,31 +228,33 @@ class _CarouselPageState extends State<CarouselPage> {
             left: 0,
             right: 0,
             bottom: 0,
-            child: FittedBox(
-              child: Container(
-                width: 300,
-                height: 300,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(40.0),
-                  child: Image.asset(
-                    imagePath,
-                    fit: BoxFit.cover,
-                  ),
+            child: Container(
+              width: 500,
+              height: 500,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(40.0),
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
           Positioned(
             top: 10,
-            right: 20,
+            right: 30,
             child: SizedBox(
               width: 50,
               height: 50,
               child: IconButton(
                 icon: liked[index]
-                    ? Icon(Icons.favorite,)
-                    : Icon(Icons.favorite_border, color: Colors.grey[600]),
-                color: liked[index] ? Colors.red : Colors.grey,
+                    ? Icon(Icons.favorite, size: 40)
+                    : Icon(
+                  Icons.favorite_border,
+                  size: 40,
+                  color: Colors.grey[600],
+                ),
+                color: liked[index] ? Colors.grey : Colors.grey,
                 onPressed: () {
                   setState(() {
                     liked[index] = !liked[index];
@@ -229,40 +263,46 @@ class _CarouselPageState extends State<CarouselPage> {
               ),
             ),
           ),
-          Positioned(
-            top:100,
-            left: 0,
-            right: 0,
+          if (index == currentIndex%3)
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
 
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon: Icon(Icons.arrow_back, color: Colors.white,),
-                  onPressed: () {
-                    if (_pageController.page! > 0) {
-                      _pageController.previousPage(
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      );
-                    }
-                  },
-                ),
-                SizedBox(width: 140), // Add spacing between arrows if needed
-                IconButton(
-                  icon: Icon(Icons.arrow_forward, color: Colors.white,),
-                  onPressed: () {
-                    if (_pageController.page! < images.length - 1) {
-                      _pageController.nextPage(
-                        duration: Duration(milliseconds: 600),
-                        curve: Curves.easeInOut,
-                      );
-                    }
-                  },
-                ),
-              ],
+                    InkWell(
+                      child: Image.asset(
+                        "assets/leftW.png",
+                        width: 80,
+                        height: 50,
+                      ),
+                      onTap: () {
+                        _pageController.previousPage(
+                          duration: Duration(milliseconds: 450),
+                          curve: Curves.easeInOut,
+                        );
+                      },
+                    ),
+
+                    InkWell(
+                      child: Image.asset(
+                        "assets/rightW.png",
+                        width: 80,
+                        height: 50,
+                      ),
+                      onTap: () {
+                        _pageController.nextPage(
+                          duration: Duration(milliseconds: 450),
+                          curve: Curves.easeInOut,
+                        );
+                      },
+                    ),
+                ],
+              ),
             ),
-          ),
         ],
       ),
     );
